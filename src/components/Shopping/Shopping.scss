@@ -1,0 +1,127 @@
+.Shopping-block-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-content: space-between;
+}
+
+.Shopping-block-list-item {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    width: 280px;
+    height: 400px;
+    padding: 10px 15px;
+    box-shadow: 4px 4px 20px 3px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+
+    img {
+        width: 250px;
+        height: 250px;
+    }
+
+    div:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        p:nth-child(1) {
+            text-transform: capitalize;
+            font-weight: 900;
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+        }
+
+        p:nth-child(2) {
+            color: rgb(248, 20, 20);
+        }
+    }
+
+    button {
+        width: 100%;
+        text-transform: capitalize;
+    }
+
+}
+
+
+.Shopping-module {
+    position: fixed;
+    background: rgba(79, 78, 78, 0.52);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.Shopping-module-inner {
+    display: flex;
+    align-items: start;
+    width: 400px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    min-height: 450px;
+
+    #cancel {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        border: none;
+        background: none;
+        color: grey;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+}
+
+.Shopping-module-inner-items {
+    width: 100%;
+    padding-top: 20px;
+    ul {
+        min-height: 350px;
+        overflow-y: auto;
+    }
+
+    h3 {
+        text-align: center;
+        padding: 10px 0 30px 0;
+    }
+
+    #total {
+        text-align: center;
+        font-weight: 700;
+
+        span {
+            color: red;
+        }
+    }
+}
+
+.Shopping-inner-items-li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    line-height: 45px;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    padding-bottom: 10px;
+
+    p {
+        font-size: 18px;
+
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+}
