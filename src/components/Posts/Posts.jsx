@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import './Posts.scss'
 
 function Posts() {
     const posts = useSelector(state => state?.posts.posts)
@@ -18,6 +19,7 @@ function Posts() {
                                     <div className="Posts-list-item-text">
                                         <h3>{item.title}</h3>
                                         <p>{item.text}</p>
+                                    <button>Add comment...</button>
                                     </div>
                                 </div>
                             ))
