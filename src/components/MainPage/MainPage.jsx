@@ -7,6 +7,8 @@ import {
     ShoppingOutlined,
     DatabaseOutlined,
     FormOutlined,
+    SwapOutlined,
+    FormatPainterOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import Cards from '../Cards/Cards';
@@ -14,6 +16,8 @@ import Todo from '../Todo/Todo';
 import Shopping from '../Shopping/Shopping';
 import Fetch from '../Fetch/Fetch';
 import Posts from '../Posts/Posts';
+import Drag from '../DragandDrop/Drag';
+import Form from '../Form/Form'
 
 const { Header, Sider, Content } = Layout;
 
@@ -32,7 +36,7 @@ const MainPage = () => {
                     mode="inline"
                     defaultSelectedKeys={['1']}>
                     <Menu.Item key="1" icon={<UserOutlined />}>
-                        <Link to="/Cards">Cards</Link>
+                        <Link to="/">Cards</Link>
                     </Menu.Item>
                     <Menu.Item key="2" icon={<FormOutlined />}>
                         <Link to="/Todo">Todo</Link>
@@ -45,6 +49,12 @@ const MainPage = () => {
                     </Menu.Item>
                     <Menu.Item key="5" icon={<DatabaseOutlined />}>
                         <Link to="/Posts">Posts</Link>
+                    </Menu.Item>
+                    <Menu.Item key="6" icon={<SwapOutlined />}>
+                        <Link to="/Drag">Drag and Drop</Link>
+                    </Menu.Item>
+                    <Menu.Item key="7" icon={<FormatPainterOutlined />}>
+                        <Link to="/Form">Form</Link>
                     </Menu.Item>
                 </Menu>
             </Sider>
@@ -59,11 +69,13 @@ const MainPage = () => {
                 </Header>
                 <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280, background: colorBgContainer, borderRadius: borderRadiusLG }}>
                     <Routes>
-                        <Route path="/Cards" element={<Cards />} />
+                        <Route path="/" element={<Cards />} />
                         <Route path="/Todo" element={<Todo />} />
                         <Route path="/Store" element={<Shopping />} />
                         <Route path="/Fetch" element={<Fetch />} />
                         <Route path="/Posts" element={<Posts />} />
+                        <Route path="/Drag" element={<Drag />} />
+                        <Route path="/Form" element={<Form />} />
                     </Routes>
                 </Content>
             </Layout>

@@ -1,0 +1,64 @@
+.Form-block-inner-email,
+.Form-block-inner-pass,
+.Form-block-inner-address {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 30px;
+}
+
+.Form-block-inner-promocode {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 30px;
+
+    div:nth-child(1) {
+        display: flex;
+        justify-content: space-around;
+        gap: 100px;
+
+        div {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+    }
+}
+
+.Form-block-inner-btn {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-left: 200px;
+    gap: 20px;
+}
+
+.error {
+    color: red;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    margin: -20px 0px 0 60px;
+}
+
+.error-coupon {
+    color: red;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    margin: -20px 0px 0 70px;
+}
+
+.error-input {
+    border: 1px solid red;
+
+    &::placeholder {
+        color: red;
+    }
+}
