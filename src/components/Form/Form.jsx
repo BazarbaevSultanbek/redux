@@ -1,26 +1,58 @@
 import { TextField } from '@mui/material'
-import { Button } from 'antd'
+import { Button, notification } from 'antd'
 import './Form.scss'
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Form() {
     const form = useForm();
+    const [api, contextHolder] = notification.useNotification();
     const { register, handleSubmit, formState, reset } = form;
     const { errors } = formState;
-    const [coupon, setCoupon] = useState(false)
-    const submitForm = (data) => {
-        alert(JSON.stringify(data));
-        reset();
+    const [promocode, setPromocode] = useState(false)
+    const submitForm = (placement, data) => {
+        if (JSON.stringify(data) !== "") {
+            api.info({
+                message: `Submitted`,
+                description: JSON.stringify(data),
+                placement
+            });
+        }
     };
 
+    useEffect(() => {
+        if (errors.email) {
+            api.info({
+                message: errors.email.message,
+                placement: 'topRight'
+            });
+        }
+        if (errors.password) {
+            api.info({
+                message: errors.password.message,
+                placement: 'topRight'
+            });
+        }
+        if (errors.promocode) {
+            api.info({
+                message: errors.promocode.message,
+                placement: 'topRight'
+            });
+        }
+        if (errors.Address) {
+            api.info({
+                message: errors.Address.message,
+                placement: 'topRight'
+            });
+        }
+    })
     return (
         <div className='Form'>
+            {contextHolder}
             <div className="container">
                 <div className="Form-block">
                     <div className="Form-block-inner">
-                        <form onSubmit={handleSubmit(submitForm)} noValidate>
-                            
+                        <form onSubmit={handleSubmit((data) => submitForm('top', data))} noValidate>
                             <div className="Form-block-inner-email">
                                 <span>Email:</span>
                                 <TextField
@@ -40,9 +72,7 @@ function Form() {
                                             }
                                         }
                                     )} className={errors.email ? "error-input" : ""} />
-                                <p className="error">{errors.email?.message}</p>
                             </div>
-
                             <div className="Form-block-inner-pass">
                                 <span>
                                     Password:
@@ -62,32 +92,32 @@ function Form() {
                                             required: { value: true, message: 'Password is required field' },
                                         }
                                     )} className={errors.password ? "error-input" : ""} />
-                                <p className="error">{errors.password?.message}</p>
                             </div>
-
                             <div className="Form-block-inner-promocode">
                                 <div>
                                     <p>Do you have promo code?</p>
                                     <div>
                                         <span>Yes</span>
-                                        <input type="radio" name="promo" id="promo" onClick={() => setCoupon(true)} />
+                                        <input type="radio" name="promo" id="promo" onClick={() => setPromocode(true)} />
                                         <span>No</span>
-                                        <input type="radio" name="promo" id="promo" onClick={() => setCoupon(false)} />
+                                        <input type="radio" name="promo" id="promo" onClick={() => setPromocode(false)} />
                                     </div>
                                 </div>
                                 <div className='Form-inner-promocode-navi' style={{
-                                    display: coupon ? 'block' : 'none'
+                                    display: promocode ? 'block' : 'none'
                                 }}>
-                                    <TextField
-                                        required
-                                        id="outlined-required"
-                                        label="Promocode"
-                                        {...register('coupon', {
-                                            required: { value: coupon, message: 'Coupon is required field' }
-                                        })} className={errors.coupon ? "error-input" : ""}
-                                    />
+                                    <div>
+                                        <TextField
+                                            required
+                                            id="outlined-required"
+                                            label="Promocode"
+                                            {...register('promocode', {
+                                                required: { value: promocode, message: 'Promocode is required field' }
+                                            })} className={errors.promocode ? "error-input" : ""}
+                                        />
+                                        {/* <p className="error-coupon">{errors.coupon?.message}</p> */}
+                                    </div>
                                 </div>
-                                <p className="error-coupon">{errors.coupon?.message}</p>
                             </div>
                             <div className="Form-block-inner-address">
                                 <span>Address:</span>
@@ -102,11 +132,11 @@ function Form() {
                                         }
                                     )} className={errors.password ? "error-input" : ""}
                                 />
-                                <p className="error-address">{errors.Address?.message}</p>
+                                {/* <p className="error-address">{errors.Address?.message}</p> */}
                             </div>
                             <div className="Form-block-inner-btn">
                                 <Button onClick={() => reset()}>Reset</Button>
-                                <Button type="primary">Submit</Button>
+                                <Button type="primary" htmlType="submit">Submit</Button>
                             </div>
                         </form>
                     </div>

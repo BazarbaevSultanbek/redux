@@ -13,7 +13,7 @@ export const listReducer = createSlice({
             },
             {
                 text: 'Hello World!',
-                status: 'complete',
+                status: 'completed',
                 date: "2024-04-30",
                 id: 712631
             },

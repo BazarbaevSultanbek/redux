@@ -1,7 +1,13 @@
 .Drag-block-inner-completed,
 .Drag-block-inner-incomplete,
 .Drag-block-inner-progress {
+
+    li {
+        list-style: none;
+    }
     div {
+
+
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -11,7 +17,9 @@
         padding: 3px 15px;
         background-color: white;
         border-radius: 5px;
-        font-family: "Roboto", sans-serif;
+        font-family: "Roboto",
+        sans-serif;
+
 
         p {
             width: 150px;

@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const dragReducer = createSlice({
-    name: 'tasks',
+    name: 'drags',
     initialState: {
-        title: 'tasks',
         tasks: [
             {
                 task: 'Go to the gym!',
@@ -27,16 +26,23 @@ export const dragReducer = createSlice({
             },
             {
                 task: 'Sleep 2 hours',
-                id: 3,
+                id: 5,
                 status: 'incomplete'
             }
-
         ]
     },
     reducers: {
+        updateTaskStatus(state, action) {
+            const { taskId, newStatus } = action.payload;
+            state.tasks = state.tasks.map(task =>
+                task.id === taskId ? { ...task, status: newStatus } : task
+            );
+        },
+        updateTasksOrder(state, action) {
+            state.tasks = action.payload;
+        }
     },
 });
 
-export const { } = dragReducer.actions;
+export const { updateTaskStatus, updateTasksOrder } = dragReducer.actions;
 export default dragReducer.reducer;
-

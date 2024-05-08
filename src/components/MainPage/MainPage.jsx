@@ -9,6 +9,7 @@ import {
     FormOutlined,
     SwapOutlined,
     FormatPainterOutlined,
+    Loading3QuartersOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import Cards from '../Cards/Cards';
@@ -18,6 +19,8 @@ import Fetch from '../Fetch/Fetch';
 import Posts from '../Posts/Posts';
 import Drag from '../DragandDrop/Drag';
 import Form from '../Form/Form'
+import Loading from '../Loading/Loading'
+
 
 const { Header, Sider, Content } = Layout;
 
@@ -56,6 +59,9 @@ const MainPage = () => {
                     <Menu.Item key="7" icon={<FormatPainterOutlined />}>
                         <Link to="/Form">Form</Link>
                     </Menu.Item>
+                    <Menu.Item key="8" icon={<Loading3QuartersOutlined />}>
+                        <Link to="/loading">Loading</Link>
+                    </Menu.Item>
                 </Menu>
             </Sider>
             <Layout>
@@ -76,6 +82,7 @@ const MainPage = () => {
                         <Route path="/Posts" element={<Posts />} />
                         <Route path="/Drag" element={<Drag />} />
                         <Route path="/Form" element={<Form />} />
+                        <Route path="/loading" element={<Loading />} />
                     </Routes>
                 </Content>
             </Layout>
